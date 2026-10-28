@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Chess Position Exporter for Lichess",
+  "version": "1.2.1",
+  "description": "从 Lichess 读取当前棋盘、保存谜题起点、复制复盘棋谱。数据仅在本机处理。",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://lichess.org/*"
+      ],
+      "js": [
+        "board-core.js",
+        "tree-reader.js",
+        "monitor.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "棋盘助手：复制棋盘与复盘记录",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "short_name": "Chess Exporter",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
