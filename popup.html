@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>棋盘助手</title><link rel="stylesheet" href="popup.css"></head>
+<body>
+<header><div class="mark">♞</div><div><h1>棋盘助手 <small>v1.2.1</small></h1><div class="subtitle">Lichess → ChatGPT</div></div></header>
+<main>
+  <div id="status" role="status">正在读取棋盘…</div>
+  <section id="panel" hidden>
+    <div class="meta"><span id="boardInfo"></span><span id="startFlag" class="badge"></span></div>
+    <button id="copyPosition" class="button primary">复制当前局面</button>
+    <button id="copyReview" class="button secondary">复制复盘记录</button>
+    <div class="row-between"><button id="markStart" class="textbutton">◎ 设当前为起点</button><span id="moveInfo" class="muted"></span></div>
+    <div id="feedback" aria-live="polite" role="status"></div>
+    <details id="advanced">
+      <summary>更多选项 <span>▾</span></summary>
+      <div class="inside">
+        <label for="turn">轮到谁走</label>
+        <select id="turn"><option value="">尚不确定</option><option value="w">白方</option><option value="b">黑方</option></select>
+        <p id="turnNote" class="helper"></p>
+        <label for="fen">当前 FEN</label>
+        <textarea id="fen" rows="2" readonly spellcheck="false"></textarea>
+        <button id="copyFen" class="textbutton">复制 FEN</button>
+        <div class="divider"></div>
+        <label for="treeMoves">棋谱 / 记录诊断</label>
+        <textarea id="treeMoves" rows="3" readonly spellcheck="false"></textarea>
+        <p id="diagnostic" class="helper"></p>
+        <button id="copyStart" class="textbutton">复制起点局面</button>
+        <button id="reset" class="textbutton danger">清空记录，重新开始</button>
+        <button id="refresh" class="textbutton">重新读取</button>
+      </div>
+    </details>
+  </section>
+</main>
+<footer>仅在本机读取网页；不上传数据、不运行棋力引擎。</footer>
+<script src="popup.js"></script>
+</body></html>
